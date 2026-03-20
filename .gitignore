@@ -2,6 +2,8 @@
 /vendor/
 /var/
 /cache/
+/data/
+composer.lock
 /.phpunit.result.cache
 /phpstan.neon.cache
 /.psalm/
