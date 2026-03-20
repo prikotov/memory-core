@@ -1,0 +1,8 @@
+/.env.local
+/vendor/
+/var/
+/cache/
+/.phpunit.result.cache
+/phpstan.neon.cache
+/.psalm/
+/.idea/
