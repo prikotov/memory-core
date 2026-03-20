@@ -1,0 +1,31 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+use Memory\Core\Command\AllCommand;
+use Memory\Core\Command\ClearCommand;
+use Memory\Core\Command\GetCommand;
+use Memory\Core\Command\SetCommand;
+use Memory\Core\Storage\FilesystemStorage;
+use Symfony\Component\Console\Application;
+
+if (!is_dir(dirname(__DIR__).'/vendor')) {
+    throw new LogicException('Dependencies are missing. Try running "composer install".');
+}
+
+require_once dirname(__DIR__).'/vendor/autoload.php';
+
+$dataDir = getenv('MEMORY_DATA_DIR') ?: dirname(__DIR__).'/data';
+$filename = getenv('MEMORY_FILENAME') ?: 'data.json';
+$storage = new FilesystemStorage($dataDir, $filename);
+
+$application = new Application('memory-core', '1.0.0');
+$application->addCommands([
+    new GetCommand($storage),
+    new SetCommand($storage),
+    new AllCommand($storage),
+    new ClearCommand($storage),
+]);
+
+$application->run();
