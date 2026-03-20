@@ -42,16 +42,10 @@
     },
     "scripts": {
         "test": "phpunit",
-        "cs-check": "phpcs --standard=devops/phpcs/MemoryCodingStandard/ruleset.xml src tests",
-        "cs-fix": "phpcbf --standard=devops/phpcs/MemoryCodingStandard/ruleset.xml src tests",
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
         "stan": "phpstan analyse",
-        "psalm": "psalm",
-        "post-install-cmd": [
-            "@php vendor/bin/phpcs --config-set installed_paths $(pwd)/devops/phpcs"
-        ],
-        "post-update-cmd": [
-            "@php vendor/bin/phpcs --config-set installed_paths $(pwd)/devops/phpcs"
-        ]
+        "psalm": "psalm"
     },
     "extra": {
         "branch-alias": {
